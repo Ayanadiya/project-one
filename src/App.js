@@ -11,7 +11,7 @@ function App() {
     <div>
       <h1>Let's get Started</h1>
       <p>I am learning React</p>
-      <Expenses expenses={expenses}></Expenses>
+      <Expenses expenses={expenses}/>
     </div>
   );
 }
