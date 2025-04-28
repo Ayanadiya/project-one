@@ -1,16 +1,12 @@
 import './ExpenseItem.css'
-const months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+import './ExpenseDate';
+import ExpenseDate from './ExpenseDate';
+
 function ExpenseItem(props){
-  const month=months[props.date.getMonth()];
-  const year=props.date.getFullYear();
-  const date=String(props.date.getDate()).padStart(2, '0'); //to get in '01' format
+  
 return(
     <div className="expense-item">
-      <div className="expense-item__description">
-        <div>{month}</div>
-        <div>{year}</div>
-        <div>{date}</div>
-      </div>
+      <ExpenseDate date={props.date}></ExpenseDate>
       <div className="expense-item__location">{props.location}</div>
       <div>
         <h2>{props.title}</h2>
