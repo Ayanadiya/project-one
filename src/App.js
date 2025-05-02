@@ -8,9 +8,14 @@ function App() {
     { id: "3", date: new Date(2023, 10, 11), title: "Pen", price: 1,  location:"Hyderabad" },
     { id: "4", date: new Date(2023, 1, 14), title: "Laptop", price: 200,  location:"Mumbai" },
   ]
+  const saveExpenseHandler = (expenseData) => {
+     console.log(expenseData);
+     expenses.push(expenseData);
+     console.log(expenses);
+  }
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onSaveExpense={saveExpenseHandler}/>
       <Expenses expenses={expenses}/>
     </div>
   );
