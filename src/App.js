@@ -1,4 +1,4 @@
-
+import React, {useState} from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
@@ -8,15 +8,19 @@ function App() {
     { id: "3", date: new Date(2023, 10, 11), title: "Pen", price: 1,  location:"Hyderabad" },
     { id: "4", date: new Date(2023, 1, 14), title: "Laptop", price: 200,  location:"Mumbai" },
   ]
+
+  const [expenseList, setExpenseList]= useState(expenses);
+  
   const saveExpenseHandler = (expenseData) => {
      console.log(expenseData);
-     expenses.push(expenseData);
-     console.log(expenses);
+     setExpenseList((prevExpense)=>{
+      return [...prevExpense,expenseData]
+    })
   }
   return (
     <div>
       <NewExpense onSaveExpense={saveExpenseHandler}/>
-      <Expenses expenses={expenses}/>
+      <Expenses expenses={expenseList} />
     </div>
   );
 }
