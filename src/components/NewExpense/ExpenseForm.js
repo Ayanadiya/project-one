@@ -3,6 +3,7 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
+  const [isAdditing, setIsAdditing]=useState(false);
 
   const titleChangeHandler = (event) => {
    setEnteredTitle(event.target.value);
@@ -31,8 +32,16 @@ const ExpenseForm = (props) => {
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
+    setIsAdditing(false);
   }
-
+  const addExpenseButtonHandler=()=>{
+    setIsAdditing(true);
+  }
+  const cancelButtonHandler=()=> setIsAdditing(false);
+  if(!isAdditing)
+  {
+    return <button onClick={addExpenseButtonHandler}>Add Expense</button>
+  }
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="new-expense__controls">
@@ -50,6 +59,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={cancelButtonHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
